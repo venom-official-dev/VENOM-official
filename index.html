@@ -1,1 +1,383 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050914">
+<meta name="description" content="VENOM — an independent AI assistant for Windows. Follow its development and join the launch waitlist.">
+<title>VENOM — Official Website</title>
+<style>
+:root{
+  --bg:#050914;
+  --panel:#0c1527;
+  --line:#263652;
+  --blue:#347dff;
+  --text:#f5f8ff;
+  --muted:#a1b2cc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:18px 7%;
+  background:#050914ed;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+}
+.logo{
+  font-weight:900;
+  font-size:23px;
+  letter-spacing:4px;
+}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{font-size:13px;color:var(--muted)}
+nav a:hover{color:white}
+.hero{
+  min-height:640px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+  max-width:1200px;
+  margin:auto;
+  padding:90px 7%;
+}
+.eyebrow{
+  color:#77adff;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:bold;
+}
+h1{
+  font-size:clamp(65px,11vw,120px);
+  line-height:1;
+  letter-spacing:5px;
+  margin:20px 0;
+}
+h2{font-size:clamp(30px,5vw,48px)}
+p{color:var(--muted);line-height:1.8}
+.hero p{max-width:470px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-block;
+  padding:15px 25px;
+  border-radius:12px;
+  background:var(--blue);
+  color:white;
+  font-weight:bold;
+  border:1px solid transparent;
+}
+.btn.secondary{
+  background:transparent;
+  border-color:#536580;
+}
+.orb-wrap{
+  min-height:390px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.orb{
+  width:min(68vw,310px);
+  height:min(68vw,310px);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 25%,#d2f4ff 0%,#58b9ff 9%,transparent 30%),
+    radial-gradient(circle at 65% 70%,#122d88,transparent 55%),
+    radial-gradient(circle at 50% 45%,#246be7,#071634 72%);
+  box-shadow:
+    inset -20px -25px 50px #020a24,
+    inset 12px 12px 35px #8edcff88,
+    0 0 70px #1677ff77,
+    0 0 150px #1453ff44;
+  border:2px solid #7dd3fc;
+  animation:float 5s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+.orb-label{
+  position:absolute;
+  background:#0c1729e8;
+  border:1px solid #385477;
+  border-radius:12px;
+  padding:13px 17px;
+  font-size:12px;
+  box-shadow:0 12px 30px #0008;
+}
+.orb-label.one{top:14%;left:0}
+.orb-label.two{bottom:15%;right:0}
+section{padding:90px 7%}
+.section-inner{max-width:1100px;margin:auto}
+.center{text-align:center}
+.card{
+  background:linear-gradient(145deg,#101d34,#07101e);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:35px;
+}
+.waitlist{
+  background:
+    radial-gradient(ellipse at center,#0d2852 0%,#050914 70%);
+}
+.waitlist .card{
+  max-width:560px;
+  margin:auto;
+  text-align:center;
+  box-shadow:0 25px 90px #0008;
+}
+input{
+  width:100%;
+  padding:16px;
+  border-radius:10px;
+  border:1px solid #3c506f;
+  background:#07101e;
+  color:white;
+  margin:15px 0 10px;
+}
+input:disabled{opacity:.65}
+button{
+  width:100%;
+  padding:16px;
+  background:var(--blue);
+  color:white;
+  border:0;
+  border-radius:10px;
+  font-weight:bold;
+}
+button:disabled{opacity:.6;cursor:not-allowed}
+.small{font-size:12px}
+.download-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+.mockup{
+  border:8px solid #26334a;
+  border-radius:20px;
+  padding:20px;
+  background:#080e1a;
+  min-height:270px;
+  box-shadow:0 30px 65px #000a;
+}
+.mockup-top{
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+  font-weight:bold;
+  letter-spacing:3px;
+}
+.mockup-body{
+  display:grid;
+  place-items:center;
+  min-height:175px;
+  color:#72aaff;
+  font-size:28px;
+  font-weight:bold;
+  text-shadow:0 0 30px #2379ff;
+}
+.status{
+  display:inline-block;
+  color:#9fc7ff;
+  border:1px solid #42669b;
+  padding:10px 16px;
+  border-radius:30px;
+  background:#10203b;
+  font-size:13px;
+}
+.timeline{
+  max-width:750px;
+  margin:40px auto 0;
+  border-left:2px solid #345da1;
+  padding-left:28px;
+}
+.milestone{
+  position:relative;
+  margin-bottom:20px;
+}
+.milestone:before{
+  content:"";
+  position:absolute;
+  left:-37px;
+  top:24px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#4c8dff;
+  box-shadow:0 0 20px #367cff;
+}
+.milestone h3{margin-top:0}
+footer{
+  text-align:center;
+  padding:35px 20px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:13px;
+}
+@media(max-width:750px){
+  header{align-items:flex-start;flex-direction:column}
+  nav{gap:14px}
+  .hero{grid-template-columns:1fr;padding-top:65px}
+  .orb-wrap{min-height:350px}
+  .download-layout{grid-template-columns:1fr}
+  section{padding:65px 6%}
+  .card{padding:25px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#home">VENOM</a>
+  <nav aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#waitlist">Waitlist</a>
+    <a href="#download">Download</a>
+    <a href="#roadmap">Roadmap</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div>
+      <div class="eyebrow">THE FUTURE IS IN DEVELOPMENT</div>
+      <h1>VENOM</h1>
+      <p>
+        An independent AI assistant project for Windows.
+        Built with the ambition to make everyday
+        computer interaction smarter and more natural.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#waitlist">Get Updates</a>
+        <a class="btn secondary" href="#about">Discover VENOM</a>
+      </div>
+    </div>
+    <div class="orb-wrap" aria-label="Glowing blue AI sphere">
+      <div class="orb"></div>
+      <div class="orb-label one">VENOM SYSTEM<br>Development in progress</div>
+      <div class="orb-label two">WINDOWS ASSISTANT<br>Coming soon</div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="section-inner center">
+      <div class="eyebrow">INTRODUCING VENOM</div>
+      <h2>Intelligence, reimagined.</h2>
+      <p>
+        VENOM is an evolving desktop AI assistant project.
+        Its goal is to help users interact with their
+        computers through a useful and intuitive interface.
+        Features are being developed and tested.
+      </p>
+    </div>
+  </section>
+
+  <section class="waitlist" id="waitlist">
+    <div class="card">
+      <div class="eyebrow">LAUNCH UPDATES</div>
+      <h2>Join our Waitlist</h2>
+      <p>
+        Want to know when VENOM becomes available?
+        Email registration will open soon.
+      </p>
+      <label for="email" class="small">Email address</label>
+      <input id="email" type="email"
+        placeholder="Registration coming soon"
+        disabled>
+      <button disabled>Waitlist Opening Soon</button>
+      <p class="small">
+        Registration is not active yet.
+        No email addresses are collected on this page.
+      </p>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="section-inner download-layout">
+      <div>
+        <div class="eyebrow">WINDOWS APPLICATION</div>
+        <h2>Meet your future desktop assistant.</h2>
+        <p>
+          VENOM for Windows is under development.
+          The download will become available
+          after the application is ready for release.
+        </p>
+        <span class="status">Download — Coming Soon</span>
+        <p class="small">
+          Version and system requirements will
+          be published when confirmed.
+        </p>
+      </div>
+      <div class="mockup">
+        <div class="mockup-top">VENOM / DESKTOP</div>
+        <div class="mockup-body">VENOM</div>
+        <p class="small center">
+          Concept preview — not a screenshot of the final app.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="section-inner">
+      <div class="center">
+        <div class="eyebrow">DEVELOPMENT JOURNEY</div>
+        <h2>VENOM Roadmap</h2>
+        <p>
+          Our current development direction.
+          Milestones are not release-date promises.
+        </p>
+      </div>
+      <div class="timeline">
+        <div class="card milestone">
+          <h3>01 — Project Foundation</h3>
+          <p>Initial Windows assistant development and experiments.</p>
+          <span class="status">Started</span>
+        </div>
+        <div class="card milestone">
+          <h3>02 — Assistant Improvements</h3>
+          <p>Improving reliability, responses and desktop interaction.</p>
+          <span class="status">In Development</span>
+        </div>
+        <div class="card milestone">
+          <h3>03 — Testing & Refinement</h3>
+          <p>Testing features and resolving issues before release.</p>
+          <span class="status">Planned</span>
+        </div>
+        <div class="card milestone">
+          <h3>04 — Public Release</h3>
+          <p>Publishing the Windows download when VENOM is ready.</p>
+          <span class="status">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  VENOM — Independent AI Assistant Project
+  <p class="small">Official development website.</p>
+</footer>
+
+</body>
+  </html>
+        
